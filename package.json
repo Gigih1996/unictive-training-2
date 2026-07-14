@@ -1,0 +1,52 @@
+{
+  "name": "tugas-login",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test --watch=false",
+    "start:dev": "ng serve --configuration=dev --port 4200 --open",
+    "start:staging": "ng serve --configuration=staging --port 4200 --open",
+    "start:prod": "ng serve --configuration=production --port 4200 --open",
+    "build:dev": "ng build --configuration=dev",
+    "build:staging": "ng build --configuration=staging",
+    "build:prod": "ng build --configuration=production",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "packageManager": "npm@11.17.0",
+  "dependencies": {
+    "@angular/animations": "^21.2.18",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@angular/router": "^22.0.0",
+    "@ngx-pwa/local-storage": "^22.0.0",
+    "@primeuix/themes": "^2.0.3",
+    "@tailwindcss/postcss": "^4.3.2",
+    "postcss": "^8.5.18",
+    "primeicons": "^7.0.0",
+    "primeng": "^21.1.9",
+    "quill": "^2.0.3",
+    "rxjs": "~7.8.0",
+    "sweetalert2": "^11.26.25",
+    "tailwindcss": "^4.3.2",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.0.3",
+    "@angular/cli": "^22.0.3",
+    "@angular/compiler-cli": "^22.0.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^4.0.8"
+  },
+  "bin": {
+    "dx": "./tools/dx.js"
+  }
+}

@@ -1,0 +1,32 @@
+image: node:22 # Gunakan image Node.js versi 22 untuk menjalankan pipeline
+
+definitions:
+  caches:
+    sonar: ~/.sonar
+    node: ~/.npm # Cache untuk dependencies Node.js
+
+  steps:
+    - step: &build-angular
+        name: Build Angular App
+        image: node:22
+        caches:
+          - node
+        script:
+          - npm install -g wrangler # Install Wrangler CLI versi terbaru
+          - npm install --legacy-peer-deps # Install dependencies dari package.json di root
+          - npm run build
+          - cd workers-site
+          - npm install
+          - ls
+          - cd ../
+          - CLOUDFLARE_API_TOKEN=$CF_API_TOKEN wrangler deploy --config
+            wrangler.toml
+
+clone:
+  depth: full # Clone seluruh history git (diperlukan SonarQube)
+
+pipelines:
+  branches:
+    staging:
+      # - step: *sonar-analysis
+      - step: *build-angular
