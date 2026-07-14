@@ -1,22 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Widget_gameModule } from '@shared/widgets/widget_game/widget_game.module';
+import { Entity_User } from '@core/models/entities/user.entity';
 import { AuthService } from '@api/auth/auth.service';
+import { HelperService } from '@core/services/helper.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [Widget_gameModule],
+  imports: [],
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  user = Entity_User.state;
+
+  constructor(
+    private auth: AuthService,
+    private helper: HelperService,
+  ) { }
 
   ngOnInit() {
   }
 
-  logout() {
-    this.auth.logout();
+  async logout() {
+    const confirmed = await this.helper.confirmationAlert({
+      type: 'confirm',
+      title: 'Logout',
+      message: 'Apakah Anda yakin ingin logout?',
+      button: 'Ya, Logout',
+      button_cancel: 'Batal',
+      showCancel: true,
+    });
+
+    if (confirmed) {
+      this.auth.logout();
+    }
   }
 
 }
-``

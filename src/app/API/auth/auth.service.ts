@@ -111,7 +111,7 @@ export class AuthService extends AbstractApiService<any> {
     const isLogin = singleStoreFactory<{ isLogin: boolean }>();
     isLogin.set({ isLogin: state });
 
-    console.log(isLogin)
+    // console.log(isLogin)
   }
 
 
@@ -121,17 +121,13 @@ export class AuthService extends AbstractApiService<any> {
 
     setTimeout(async () => {
 
-
-
-      this.helper.removeStorage('users');
-      this.helper.removeStorage(environment.tokenName);
-      this.helper.removeStorage('isGoogleLogin');
-
+      await this.helper.removeStorage('token');
+      await this.helper.removeStorage('users');
+      await this.helper.removeStorage(environment.tokenName);
+      await this.helper.removeStorage('isGoogleLogin');
 
       window.location.href = '/';
-      window.location.reload();
     }, 2000);
-    // await this.logoutNadia();
   }
 
 

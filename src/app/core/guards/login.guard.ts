@@ -18,11 +18,11 @@ export const loginGuard: CanActivateFn = (route, state) => {
 
 
         router.navigateByUrl('/dashboard');
-        helper.showPopup(
-          'error',
-          'Maaf',
-          'Mohon untuk logout akun terlebih dahulu di browser ini!'
-        );
+        // helper.showPopup(
+        //   'error',
+        //   'Maaf',
+        //   'Mohon untuk logout akun terlebih dahulu di browser ini!'
+        // );
         return false;
       } else {
         return true;
