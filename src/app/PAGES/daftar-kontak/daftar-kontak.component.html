@@ -1,0 +1,54 @@
+<div class="min-h-screen bg-gray-100">
+  <app-header title="Daftar Kontak" />
+
+  <div class="p-6">
+    <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
+
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold text-gray-800">Daftar Kontak</h2>
+        <app-button variant="primary" [debounceTime]="300" (onClick)="toggleForm()">
+          <i class="pi pi-plus mr-2"></i> Tambah
+        </app-button>
+      </div>
+
+      @if (showForm()) {
+        <form [formGroup]="form" (ngSubmit)="submit()"
+          class="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
+
+          <div class="mb-3">
+            <label class="block text-sm text-[#657687] mb-1" for="nama">Nama</label>
+            <input id="nama" type="text" formControlName="nama" placeholder="Nama kontak"
+              class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <alert-error [control]="form.controls.nama" label="Nama" />
+          </div>
+
+          <div class="mb-3">
+            <label class="block text-sm text-[#657687] mb-1" for="email">Email</label>
+            <input id="email" type="text" formControlName="email" placeholder="contoh@mail.com"
+              class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <alert-error [control]="form.controls.email" label="Email" />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-sm text-[#657687] mb-1" for="phone">No HP</label>
+            <input id="phone" type="text" formControlName="phone" appPhoneInputFormat placeholder="0812-3456-7890" inputmode="numeric"
+              class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <alert-error [control]="form.controls.phone" label="No HP" />
+          </div>
+
+          <div class="flex justify-end gap-2">
+            <app-button variant="secondary" [debounceTime]="300" (onClick)="toggleForm()">Batal</app-button>
+            <app-button type="submit" variant="success" [disabled]="form.invalid" [debounceTime]="300">
+              <i class="pi pi-check mr-2"></i> Simpan
+            </app-button>
+          </div>
+        </form>
+      }
+
+      <contact-list [contacts]="contacts()"
+        (onToggleFavorite)="toggleFavorite($event)"
+        (onDelete)="confirmDelete($event)" />
+
+    </div>
+  </div>
+</div>

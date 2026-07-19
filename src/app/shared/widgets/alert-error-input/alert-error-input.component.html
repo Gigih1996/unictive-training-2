@@ -1,6 +1,6 @@
 @if (hasError('required')) {
 <small class="text-[#EB5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     {{label}} diperlukan
   </div>
 </small>
@@ -15,6 +15,14 @@
 @if (hasError('invalidEmailPattern')) {
 <small class="text-[#eb5757]">
   Format {{label}} salah!
+</small>
+}
+
+@if (hasError('invalidNumberPattern')) {
+<small class="text-[#eb5757]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
+    {{label}} wajib berupa angka
+  </div>
 </small>
 }
 
@@ -34,13 +42,13 @@
 @if (hasError('minlength')) {
 <small class="text-[#eb5757]">
   {{label}} Minimal {{ control?.errors?.minlength?.requiredLength }}
-  Error
+  Karakter
 </small>
 }
 
 @if (hasError('maxlength')) {
 <small class="text-[#eb5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     {{label}} Maksimal {{ control?.errors?.maxlength?.requiredLength }}
     Karakter
   </div>
@@ -49,7 +57,7 @@
 
 @if (hasError('min')) {
 <small class="text-[#eb5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     {{label}} Minimal {{ control?.errors?.min?.min }}
   </div>
 </small>
@@ -57,7 +65,7 @@
 
 @if (hasError('max')) {
 <small class="text-[#eb5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     {{label}} Maksimal {{ control?.errors?.max?.max }}
   </div>
 </small>
@@ -71,7 +79,7 @@
 
 @if (hasError('passwordSameAsCurrent')) {
 <small class="text-[#eb5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     Password baru tidak boleh sama dengan password lama
   </div>
 </small>
@@ -79,7 +87,7 @@
 
 @if (hasError('passwordMismatch')) {
 <small class="text-[#eb5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     Password baru dan konfirmasi password baru tidak sama
   </div>
 </small>
@@ -87,7 +95,7 @@
 
 @if (hasError('strongPassword')) {
 <small class="text-[#eb5757]">
-  <div class="w-full my-2 bg-red-100 rounded-[4px] px-[12px] py-[4px]">
+  <div class="w-full my-2 bg-red-100 rounded-sm px-3 py-1">
     Password harus mengandung minimal 8 karakter, huruf besar, huruf kecil, angka, dan karakter spesial.
   </div>
 </small>

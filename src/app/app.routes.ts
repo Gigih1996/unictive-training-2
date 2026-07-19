@@ -17,6 +17,13 @@ export const routes: Routes = [
     loadComponent: () => import('./PAGES/home/home.component').then(m => m.HomeComponent)
   },
 
+  //MARK: DAFTAR KONTAK
+  {
+    path: 'daftar-kontak',
+    canActivate: [authGuard],
+    loadComponent: () => import('./PAGES/daftar-kontak/daftar-kontak.component').then(m => m.DaftarKontakComponent)
+  },
+
   //MARK: AUTHENTICATION
   {
     path: 'login',

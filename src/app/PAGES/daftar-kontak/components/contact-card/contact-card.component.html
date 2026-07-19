@@ -1,0 +1,22 @@
+<div [appHighlightFavorite]="contact.isFavorite"
+  class="bg-gray-100 rounded-lg px-4 py-3 flex items-center justify-between transition-colors">
+
+  <div>
+    <p class="font-semibold text-gray-800">{{ contact.nama | uppercase }}</p>
+    <p class="text-sm text-gray-600">{{ contact.email }} &middot; {{ contact.phone | formatPhone }}</p>
+    <p class="text-xs text-gray-400">Dibuat {{ contact.createdAt | date:'dd MMM yyyy' }}</p>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <button (click)="onToggleFavorite.emit(contact.id)" title="Favorite"
+      class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-200 transition-colors"
+      [ngClass]="contact.isFavorite ? 'text-yellow-500' : 'text-gray-400'">
+      <i class="pi text-lg" [ngClass]="contact.isFavorite ? 'pi-star-fill' : 'pi-star'"></i>
+    </button>
+
+    <app-button variant="danger" [debounceTime]="500" (onClick)="onDelete.emit(contact.id)">
+      <i class="pi pi-times"></i>
+    </app-button>
+  </div>
+
+</div>

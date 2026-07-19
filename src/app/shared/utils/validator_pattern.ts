@@ -21,5 +21,14 @@ function linkPatternValidator(): ValidatorFn {
     };
 }
 
-export { emailPatternValidator, linkPatternValidator };
+function numberPatternValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+        const value = control.value;
+        if (!value) return null;
+
+        return /^[0-9]+$/.test(String(value)) ? null : { invalidNumberPattern: true };
+    };
+}
+
+export { emailPatternValidator, linkPatternValidator, numberPatternValidator };
 
